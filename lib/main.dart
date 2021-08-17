@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ordenation_mark/shared/widgets/home.dart';
+import 'package:ordenation_mark/pages/home.dart';
 
 void main() {
   runApp(const OrdenationMarkApp());
