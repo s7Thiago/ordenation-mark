@@ -17,6 +17,7 @@ class OrdenationView extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(10),
       margin: const EdgeInsets.all(10),
+      width: 350,
       decoration: const BoxDecoration(
         border: Border.fromBorderSide(
           BorderSide(
@@ -27,10 +28,15 @@ class OrdenationView extends StatelessWidget {
       ),
       child: Column(
         children: [
-          Text(
-            '${methodName.toUpperCase()} SORT',
-            style: const TextStyle(
-              fontWeight: FontWeight.bold,
+          Container(
+            color: Colors.blue,
+            width: double.maxFinite,
+            height: 50,
+            alignment: Alignment.center,
+            child: Text(
+              '${methodName.toUpperCase()} SORT',
+              style: const TextStyle(
+                  fontWeight: FontWeight.bold, color: Colors.white),
             ),
           ),
           const SizedBox(height: 20),

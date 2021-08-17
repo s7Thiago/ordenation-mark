@@ -13,39 +13,41 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            alignment: Alignment.center,
-            child: const Text(
-              'Ordenation Mark App',
-              style: TextStyle(
-                fontSize: 40,
-              ),
+      appBar: AppBar(
+        title: const Text('Ordenation Mark'),
+        centerTitle: true,
+      ),
+      body: Center(
+        child: SingleChildScrollView(
+          child: SizedBox(
+            width: double.maxFinite,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                OrdenationView(
+                  items: [..._input],
+                  methodName: 'Bubble',
+                  method: BubbleSort.sort,
+                ),
+                OrdenationView(
+                  items: [..._input],
+                  methodName: 'Insertion',
+                  method: InsertionSort.sort,
+                ),
+                OrdenationView(
+                  items: [..._input],
+                  methodName: 'Merge',
+                  method: MergeSort.sort,
+                ),
+                OrdenationView(
+                  items: [..._input],
+                  methodName: 'Heap',
+                  method: HeapSort.sort,
+                ),
+              ],
             ),
           ),
-          OrdenationView(
-            items: [..._input],
-            methodName: 'Bubble',
-            method: BubbleSort.sort,
-          ),
-          OrdenationView(
-            items: [..._input],
-            methodName: 'Insertion',
-            method: InsertionSort.sort,
-          ),
-          OrdenationView(
-            items: [..._input],
-            methodName: 'Merge',
-            method: MergeSort.sort,
-          ),
-          OrdenationView(
-            items: [..._input],
-            methodName: 'Heap',
-            method: HeapSort.sort,
-          ),
-        ],
+        ),
       ),
     );
   }
