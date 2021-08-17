@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ordenation_mark/pages/home.dart';
+import 'package:ordenation_mark/pages/home_page.dart';
 
 void main() {
   runApp(const OrdenationMarkApp());
@@ -10,7 +10,7 @@ class OrdenationMarkApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Home(),
     );
