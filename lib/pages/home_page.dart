@@ -15,8 +15,7 @@ class Home extends StatelessWidget {
       const LearningPageContent(),
     ];
     int currentPage = 0;
-    final navigationProvider =
-        Provider.of<NavigationProvider>(context, listen: true);
+    final navigation = Provider.of<NavigationProvider>(context, listen: true);
 
     final controller = PageController();
 
@@ -28,7 +27,7 @@ class Home extends StatelessWidget {
             controller: controller,
             physics: const NeverScrollableScrollPhysics(),
             onPageChanged: (index) {
-              navigationProvider.updateIndex(index);
+              navigation.updateIndex(index);
             },
             itemCount: pages.length,
             scrollDirection: Axis.vertical,
