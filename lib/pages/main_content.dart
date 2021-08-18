@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:ordenation_mark/shared/providers/method_selection.dart';
 import 'package:ordenation_mark/shared/widgets/custom_Input.dart';
+import 'package:provider/provider.dart';
 
 enum OrdenationMehtodEnum { BubbleSort, MergeSort, HeapSort, InsertionSort }
 
 class MainPageContent extends StatelessWidget {
   MainPageContent({Key? key}) : super(key: key);
 
-  OrdenationMehtodEnum? _character = OrdenationMehtodEnum.BubbleSort;
-
   @override
   Widget build(BuildContext context) {
+    final methodprovider = Provider.of<MethodSelection>(context, listen: true);
     return Container(
       margin: EdgeInsets.only(left: 257, top: 29),
       alignment: Alignment.center,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             children: [
@@ -22,28 +24,36 @@ class MainPageContent extends StatelessWidget {
               CustomInput(label: "VALORES PARA FAZER A MEDIA"),
             ],
           ),
-          Column(
-            children: [
-              Text(
-                "SELECIONE O ALGORITMO",
-                style: TextStyle(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 18,
-                  color: Colors.white,
+          Container(
+            width: 300,
+            margin: EdgeInsets.only(top: 80),
+            child: Column(
+              children: [
+                Text(
+                  "SELECIONE O ALGORITMO",
+                  style: TextStyle(
+                    fontWeight: FontWeight.w600,
+                    fontSize: 18,
+                    color: Colors.white,
+                  ),
                 ),
-              ),
-              RadioListTile(
-                  value: OrdenationMehtodEnum.BubbleSort,
-                  groupValue: _character,
-                  onChanged: (_) {},
-                  title: const Text("Bubble Sort")),
-              RadioListTile(
-                value: OrdenationMehtodEnum.MergeSort,
-                groupValue: _character,
-                onChanged: (_) {},
-                title: const Text("Merge Sort"),
-              )
-            ],
+                RadioListTile(
+                    value: OrdenationMehtodEnum.BubbleSort,
+                    groupValue: methodprovider.method,
+                    onChanged: (OrdenationMehtodEnum? value) {
+                      methodprovider.updatemethod(value);
+                    },
+                    title: const Text("Bubble Sort")),
+                RadioListTile(
+                  value: OrdenationMehtodEnum.MergeSort,
+                  groupValue: methodprovider.method,
+                  onChanged: (OrdenationMehtodEnum? value) {
+                    methodprovider.updatemethod(value);
+                  },
+                  title: const Text("Merge Sort"),
+                )
+              ],
+            ),
           ),
         ],
       ),
