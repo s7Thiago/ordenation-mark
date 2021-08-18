@@ -15,7 +15,8 @@ class OrdenationMarkApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<NavigationProvider>(
-            create: (context) => NavigationProvider())
+          create: (context) => NavigationProvider(),
+        )
       ],
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,
