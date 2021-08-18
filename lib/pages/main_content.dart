@@ -28,6 +28,7 @@ class MainPageContent extends StatelessWidget {
             width: 300,
             margin: EdgeInsets.only(top: 80),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   "SELECIONE O ALGORITMO",
@@ -38,12 +39,17 @@ class MainPageContent extends StatelessWidget {
                   ),
                 ),
                 RadioListTile(
-                    value: OrdenationMehtodEnum.BubbleSort,
-                    groupValue: methodprovider.method,
-                    onChanged: (OrdenationMehtodEnum? value) {
-                      methodprovider.updatemethod(value);
-                    },
-                    title: const Text("Bubble Sort")),
+                  activeColor: Colors.white,
+                  value: OrdenationMehtodEnum.BubbleSort,
+                  groupValue: methodprovider.method,
+                  onChanged: (OrdenationMehtodEnum? value) {
+                    methodprovider.updatemethod(value);
+                  },
+                  title: const Text(
+                    "Bubble Sort",
+                    style: const TextStyle(color: Colors.white),
+                  ),
+                ),
                 RadioListTile(
                   value: OrdenationMehtodEnum.MergeSort,
                   groupValue: methodprovider.method,
@@ -51,7 +57,23 @@ class MainPageContent extends StatelessWidget {
                     methodprovider.updatemethod(value);
                   },
                   title: const Text("Merge Sort"),
-                )
+                ),
+                RadioListTile(
+                  value: OrdenationMehtodEnum.HeapSort,
+                  groupValue: methodprovider.method,
+                  onChanged: (OrdenationMehtodEnum? value) {
+                    methodprovider.updatemethod(value);
+                  },
+                  title: const Text("Heap Sort"),
+                ),
+                RadioListTile(
+                  value: OrdenationMehtodEnum.InsertionSort,
+                  groupValue: methodprovider.method,
+                  onChanged: (OrdenationMehtodEnum? value) {
+                    methodprovider.updatemethod(value);
+                  },
+                  title: const Text("Insertion Sort"),
+                ),
               ],
             ),
           ),
