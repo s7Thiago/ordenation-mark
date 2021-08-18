@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ordenation_mark/pages/main_content.dart';
+import 'package:ordenation_mark/pages/learning_content/learning_content.dart';
 
 class MethodSelection extends ChangeNotifier {
   OrdenationMethodEnum? _method = OrdenationMethodEnum.bubbleSort;

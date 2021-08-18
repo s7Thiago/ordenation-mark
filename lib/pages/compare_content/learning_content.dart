@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class LearningPageContent extends StatelessWidget {
-  const LearningPageContent({Key? key}) : super(key: key);
+class ComparePageContent extends StatelessWidget {
+  const ComparePageContent({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

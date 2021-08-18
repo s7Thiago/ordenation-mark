@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ordenation_mark/pages/learning_content.dart';
-import 'package:ordenation_mark/pages/main_content.dart';
+import 'package:ordenation_mark/pages/compare_content/learning_content.dart';
+import 'package:ordenation_mark/pages/learning_content/learning_content.dart';
 import 'package:ordenation_mark/shared/providers/navigation.dart';
 import 'package:ordenation_mark/shared/widgets/navigation_bar_widget/navigation_bar.dart';
 import 'package:provider/provider.dart';
@@ -11,8 +11,8 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final pages = [
-      MainPageContent(),
       const LearningPageContent(),
+      const ComparePageContent(),
     ];
     int currentPage = 0;
     final navigation = Provider.of<NavigationProvider>(context, listen: true);
