@@ -12,8 +12,11 @@ class OrdenationMarkApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => NavigationProvider(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider<NavigationProvider>(
+            create: (context) => NavigationProvider())
+      ],
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Home(),
