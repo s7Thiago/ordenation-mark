@@ -1,24 +1,36 @@
 import 'package:flutter/material.dart';
+import 'package:ordenation_mark/shared/providers/navigation.dart';
+import 'package:provider/provider.dart';
 
 class CustomNavigationItem extends StatelessWidget {
   final Widget? child;
   final VoidCallback onTap;
-  final bool selected;
+  final int index;
+  final int? selectedIndex;
 
-  const CustomNavigationItem(
-      {Key? key, this.child, required this.onTap, this.selected = false})
-      : super(key: key);
+  CustomNavigationItem({
+    Key? key,
+    this.child,
+    required this.onTap,
+    required this.index,
+    required this.selectedIndex,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final navigation = Provider.of<NavigationProvider>(context, listen: true);
+
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: Material(
-        color: selected ? Colors.purple : Colors.deepPurple,
+        color: navigation.currentIndex == index ? Colors.blue : Colors.grey,
         borderRadius: BorderRadius.circular(50),
         child: InkWell(
           borderRadius: BorderRadius.circular(50),
-          onTap: onTap,
+          onTap: () {
+            navigation.updateIndex(selectedIndex!);
+            onTap();
+          },
           child: Container(
             width: 65,
             height: 65,

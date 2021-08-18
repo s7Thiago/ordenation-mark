@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:ordenation_mark/pages/learning_content.dart';
 import 'package:ordenation_mark/pages/main_content.dart';
+import 'package:ordenation_mark/shared/providers/navigation.dart';
 import 'package:ordenation_mark/shared/widgets/navigation_bar_widget/navigation_bar.dart';
+import 'package:provider/provider.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
@@ -12,8 +14,8 @@ class Home extends StatelessWidget {
       MainPageContent(),
       const LearningPageContent(),
     ];
-
-    int selectedIndex = 0;
+    int currentPage = 0;
+    final navigation = Provider.of<NavigationProvider>(context, listen: true);
 
     final controller = PageController();
 
@@ -24,13 +26,16 @@ class Home extends StatelessWidget {
           PageView.builder(
             controller: controller,
             physics: const NeverScrollableScrollPhysics(),
+            onPageChanged: (index) {
+              navigation.updateIndex(index);
+            },
+            itemCount: pages.length,
             scrollDirection: Axis.vertical,
             itemBuilder: (_, index) {
-              selectedIndex = index;
               return pages[index];
             },
           ),
-          NavigationBar(controller: controller, selectedIndex: selectedIndex),
+          NavigationBar(controller: controller, selectedIndex: currentPage),
         ],
       ),
     );
