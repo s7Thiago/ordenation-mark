@@ -9,7 +9,7 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final pages = [
-      const MainPageContent(),
+      MainPageContent(),
       const LearningPageContent(),
     ];
 
