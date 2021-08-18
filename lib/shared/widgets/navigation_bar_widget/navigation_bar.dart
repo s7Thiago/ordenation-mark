@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:ordenation_mark/shared/providers/navigation.dart';
 import 'package:ordenation_mark/shared/widgets/navigation_bar_widget/custom_navigation_item.dart';
+import 'package:provider/provider.dart';
 
 class NavigationBar extends StatefulWidget {
   final PageController controller;
@@ -19,6 +21,8 @@ class _NavigationBarState extends State<NavigationBar> {
   @override
   Widget build(BuildContext context) {
     const duration = Duration(milliseconds: 500);
+    final navigationProvider =
+        Provider.of<NavigationProvider>(context, listen: true);
 
     void animateToPage(int page) {
       setState(() {
@@ -45,13 +49,15 @@ class _NavigationBarState extends State<NavigationBar> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           CustomNavigationItem(
-            selected: (widget.selectedIndex == 0),
+            index: 0,
+            selectedIndex: navigationProvider.currentIndex,
             onTap: () {
               animateToPage(0);
             },
           ),
           CustomNavigationItem(
-            selected: (widget.selectedIndex == 1),
+            index: 1,
+            selectedIndex: navigationProvider.currentIndex,
             onTap: () {
               animateToPage(1);
             },
