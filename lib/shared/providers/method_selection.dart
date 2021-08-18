@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:ordenation_mark/pages/main_content.dart';
 
 class MethodSelection extends ChangeNotifier {
-  OrdenationMehtodEnum? _method = OrdenationMehtodEnum.BubbleSort;
+  OrdenationMethodEnum? _method = OrdenationMethodEnum.bubbleSort;
 
-  OrdenationMehtodEnum? get method => _method;
+  OrdenationMethodEnum? get method => _method;
 
-  void updatemethod(OrdenationMehtodEnum? newmethod) {
-    _method = newmethod;
+  void updateMethod(OrdenationMethodEnum? newMethod) {
+    _method = newMethod;
     notifyListeners();
   }
 }
