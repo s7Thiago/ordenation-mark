@@ -39,13 +39,23 @@ class MainPageContent extends StatelessWidget {
                   ),
                 ),
                 RadioListTile(
-                    value: OrdenationMethodEnum.bubbleSort,
-                    groupValue: methodProvider.method,
-                    onChanged: (OrdenationMethodEnum? value) {
-                      methodProvider.updateMethod(value);
-                    },
-                    title: const Text("Bubble Sort")),
+                  activeColor: Colors.white,
+                  value: OrdenationMethodEnum.bubbleSort,
+                  groupValue: methodProvider.method,
+                  onChanged: (OrdenationMethodEnum? value) {
+                    methodProvider.updateMethod(value);
+                  },
+                  title: const Text(
+                    "Bubble Sort",
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
                 RadioListTile(
+                  tileColor: Colors.white,
+                  activeColor: Colors.black,
                   value: OrdenationMethodEnum.mergeSort,
                   groupValue: methodProvider.method,
                   onChanged: (OrdenationMethodEnum? value) {
