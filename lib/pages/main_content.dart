@@ -3,16 +3,16 @@ import 'package:ordenation_mark/shared/providers/method_selection.dart';
 import 'package:ordenation_mark/shared/widgets/custom_Input.dart';
 import 'package:provider/provider.dart';
 
-enum OrdenationMehtodEnum { BubbleSort, MergeSort, HeapSort, InsertionSort }
+enum OrdenationMethodEnum { bubbleSort, mergeSort, heapSort, insertionSort }
 
 class MainPageContent extends StatelessWidget {
-  MainPageContent({Key? key}) : super(key: key);
+  const MainPageContent({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final methodprovider = Provider.of<MethodSelection>(context, listen: true);
+    final methodProvider = Provider.of<MethodSelection>(context, listen: true);
     return Container(
-      margin: EdgeInsets.only(left: 257, top: 29),
+      margin: const EdgeInsets.only(left: 257, top: 29),
       alignment: Alignment.center,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -20,16 +20,16 @@ class MainPageContent extends StatelessWidget {
           Row(
             children: [
               CustomInput(label: "TAMANHO DO VETOR"),
-              SizedBox(width: 200),
+              const SizedBox(width: 200),
               CustomInput(label: "VALORES PARA FAZER A MEDIA"),
             ],
           ),
           Container(
             width: 300,
-            margin: EdgeInsets.only(top: 80),
+            margin: const EdgeInsets.only(top: 80),
             child: Column(
               children: [
-                Text(
+                const Text(
                   "SELECIONE O ALGORITMO",
                   style: TextStyle(
                     fontWeight: FontWeight.w600,
@@ -38,17 +38,17 @@ class MainPageContent extends StatelessWidget {
                   ),
                 ),
                 RadioListTile(
-                    value: OrdenationMehtodEnum.BubbleSort,
-                    groupValue: methodprovider.method,
-                    onChanged: (OrdenationMehtodEnum? value) {
-                      methodprovider.updatemethod(value);
+                    value: OrdenationMethodEnum.bubbleSort,
+                    groupValue: methodProvider.method,
+                    onChanged: (OrdenationMethodEnum? value) {
+                      methodProvider.updateMethod(value);
                     },
                     title: const Text("Bubble Sort")),
                 RadioListTile(
-                  value: OrdenationMehtodEnum.MergeSort,
-                  groupValue: methodprovider.method,
-                  onChanged: (OrdenationMehtodEnum? value) {
-                    methodprovider.updatemethod(value);
+                  value: OrdenationMethodEnum.mergeSort,
+                  groupValue: methodProvider.method,
+                  onChanged: (OrdenationMethodEnum? value) {
+                    methodProvider.updateMethod(value);
                   },
                   title: const Text("Merge Sort"),
                 )
