@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ordenation_mark/shared/widgets/Input.dart';
+import 'package:ordenation_mark/shared/widgets/custom_Input.dart';
 
 class MainPageContent extends StatelessWidget {
   const MainPageContent({Key? key}) : super(key: key);
@@ -13,9 +13,9 @@ class MainPageContent extends StatelessWidget {
         children: [
           Row(
             children: [
-              Input(label: "TAMANHO DO VETOR"),
+              CustomInput(label: "TAMANHO DO VETOR"),
               SizedBox(width: 200),
-              Input(label: "VALORES PARA FAZER A MEDIA"),
+              CustomInput(label: "VALORES PARA FAZER A MEDIA"),
             ],
           )
         ],
