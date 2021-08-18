@@ -61,6 +61,16 @@ class _NavigationBarState extends State<NavigationBar> {
             onTap: () {
               animateToPage(1);
             },
+            child: Text(
+              'B',
+              style: TextStyle(
+                fontSize: 25,
+                fontWeight: FontWeight.bold,
+                color: navigationProvider.currentIndex == 1
+                    ? Colors.blue
+                    : Colors.grey,
+              ),
+            ),
           ),
         ],
       ),

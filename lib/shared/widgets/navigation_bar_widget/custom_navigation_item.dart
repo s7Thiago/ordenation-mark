@@ -8,7 +8,7 @@ class CustomNavigationItem extends StatelessWidget {
   final int index;
   final int? selectedIndex;
 
-  CustomNavigationItem({
+  const CustomNavigationItem({
     Key? key,
     this.child,
     required this.onTap,
@@ -31,22 +31,30 @@ class CustomNavigationItem extends StatelessWidget {
             navigation.updateIndex(selectedIndex!);
             onTap();
           },
-          child: Container(
-            width: 65,
-            height: 65,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(50),
+          child: Card(
+            elevation: navigation.currentIndex == index ? 5 : 0,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(40),
             ),
-            alignment: Alignment.center,
-            child: child ??
-                const Text(
-                  'A',
-                  style: TextStyle(
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
+            child: Container(
+              width: 65,
+              height: 65,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(50),
+              ),
+              alignment: Alignment.center,
+              child: child ??
+                  Text(
+                    'A',
+                    style: TextStyle(
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold,
+                      color: navigation.currentIndex == index
+                          ? Colors.blue
+                          : Colors.grey,
+                    ),
                   ),
-                ),
+            ),
           ),
         ),
       ),
