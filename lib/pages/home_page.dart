@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ordenation_mark/pages/compare_content/learning_content.dart';
+import 'package:ordenation_mark/pages/compare_content/compare_content.dart';
 import 'package:ordenation_mark/pages/learning_content/learning_content.dart';
 import 'package:ordenation_mark/shared/providers/navigation.dart';
 import 'package:ordenation_mark/shared/widgets/navigation_bar_widget/navigation_bar.dart';

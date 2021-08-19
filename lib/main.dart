@@ -22,9 +22,18 @@ class OrdenationMarkApp extends StatelessWidget {
           create: (context) => MethodSelection(),
         )
       ],
-      child: const MaterialApp(
+      child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: Home(),
+        theme: ThemeData(
+          textTheme: const TextTheme(
+              bodyText1: TextStyle(
+                color: Colors.white,
+              ),
+              bodyText2: TextStyle(
+                color: Colors.white,
+              )),
+        ),
+        home: const Home(),
       ),
     );
   }

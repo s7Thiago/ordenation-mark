@@ -7,12 +7,16 @@ class FeedbackFragment extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
 
-    return Container(
-      width: size.width * .5,
-      height: size.height * .6,
-      margin: EdgeInsets.only(right: size.width * .05, top: 100),
-      decoration: const BoxDecoration(
-        color: Colors.black26,
+    return Padding(
+      padding: EdgeInsets.only(right: size.width * .05, top: 100),
+      child: Card(
+        color: Colors.black12,
+        elevation: 1,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
+        child: Container(
+          width: size.width * .5,
+          height: size.height * .6,
+        ),
       ),
     );
   }

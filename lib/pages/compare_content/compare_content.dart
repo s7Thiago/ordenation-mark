@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ordenation_mark/pages/compare_content/multiselection_mathod.dart';
 
 class ComparePageContent extends StatelessWidget {
   const ComparePageContent({Key? key}) : super(key: key);
@@ -7,9 +8,10 @@ class ComparePageContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.center,
-      child: const Text(
-        'Learning Page',
-        style: TextStyle(color: Colors.white),
+      child: Column(
+        children: [
+          MultiSelectionMethodWidget(),
+        ],
       ),
     );
   }

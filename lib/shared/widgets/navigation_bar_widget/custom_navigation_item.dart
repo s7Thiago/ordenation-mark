@@ -24,6 +24,7 @@ class CustomNavigationItem extends StatelessWidget {
       padding: const EdgeInsets.all(10.0),
       child: Material(
         color: navigation.currentIndex == index ? Colors.blue : Colors.grey,
+        elevation: navigation.currentIndex == index ? 5 : 0,
         borderRadius: BorderRadius.circular(50),
         child: InkWell(
           borderRadius: BorderRadius.circular(50),
