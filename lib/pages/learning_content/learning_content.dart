@@ -26,6 +26,7 @@ class LearningPageContent extends StatelessWidget {
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
                 width: 250,
