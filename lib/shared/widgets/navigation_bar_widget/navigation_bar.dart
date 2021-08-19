@@ -34,6 +34,9 @@ class _NavigationBarState extends State<NavigationBar> {
       });
     }
 
+    final animationDuration = const Duration(milliseconds: 800);
+    final curve = Curves.easeInOutQuart;
+
     return Container(
       height: double.maxFinite,
       alignment: Alignment.center,
@@ -54,10 +57,15 @@ class _NavigationBarState extends State<NavigationBar> {
             onTap: () {
               animateToPage(0);
             },
-            child: Image.asset(
-              'img/brain.png',
-              width: 30,
-              height: 30,
+            child: AnimatedScale(
+              curve: curve,
+              duration: animationDuration,
+              scale: navigationProvider.currentIndex == 0 ? 1.4 : 1,
+              child: Image.asset(
+                'assets/img/brain.png',
+                width: 30,
+                height: 30,
+              ),
             ),
           ),
           CustomNavigationItem(
@@ -66,10 +74,15 @@ class _NavigationBarState extends State<NavigationBar> {
             onTap: () {
               animateToPage(1);
             },
-            child: Image.asset(
-              'img/evolution.png',
-              width: 30,
-              height: 30,
+            child: AnimatedScale(
+              curve: curve,
+              duration: animationDuration,
+              scale: navigationProvider.currentIndex == 1 ? 1.4 : 1,
+              child: Image.asset(
+                'assets/img/evolution.png',
+                width: 30,
+                height: 30,
+              ),
             ),
           ),
         ],
