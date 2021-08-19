@@ -56,8 +56,8 @@ class _NavigationBarState extends State<NavigationBar> {
             },
             child: Image.asset(
               'img/brain.png',
-              width: navigationProvider.currentIndex == 0 ? 45 : 30,
-              height: navigationProvider.currentIndex == 0 ? 45 : 30,
+              width: 30,
+              height: 30,
             ),
           ),
           CustomNavigationItem(
