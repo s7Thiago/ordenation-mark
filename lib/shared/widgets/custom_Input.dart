@@ -34,6 +34,9 @@ class CustomInput extends StatelessWidget {
               Expanded(
                 child: TextField(
                   style: TextStyle(fontSize: 18),
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                  ),
                 ),
               ),
             ],
