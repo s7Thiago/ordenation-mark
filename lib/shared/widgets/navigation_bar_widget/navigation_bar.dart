@@ -54,6 +54,11 @@ class _NavigationBarState extends State<NavigationBar> {
             onTap: () {
               animateToPage(0);
             },
+            child: Image.asset(
+              'img/brain.png',
+              width: navigationProvider.currentIndex == 0 ? 45 : 30,
+              height: navigationProvider.currentIndex == 0 ? 45 : 30,
+            ),
           ),
           CustomNavigationItem(
             index: 1,
@@ -61,15 +66,10 @@ class _NavigationBarState extends State<NavigationBar> {
             onTap: () {
               animateToPage(1);
             },
-            child: Text(
-              'B',
-              style: TextStyle(
-                fontSize: 25,
-                fontWeight: FontWeight.bold,
-                color: navigationProvider.currentIndex == 1
-                    ? Colors.blue
-                    : Colors.grey,
-              ),
+            child: Image.asset(
+              'img/evolution.png',
+              width: 30,
+              height: 30,
             ),
           ),
         ],
