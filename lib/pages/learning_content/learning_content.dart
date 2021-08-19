@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ordenation_mark/pages/learning_content/feedback_fragment.dart';
 import 'package:ordenation_mark/pages/learning_content/method_selection_radio_group.dart';
+import 'package:ordenation_mark/shared/widgets/button.dart';
 import 'package:ordenation_mark/shared/widgets/custom_Input.dart';
 
 enum OrdenationMethodEnum { bubbleSort, mergeSort, heapSort, insertionSort }
@@ -10,7 +11,6 @@ class LearningPageContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Container(
       margin: const EdgeInsets.only(left: 257, top: 29),
       alignment: Alignment.center,
@@ -34,7 +34,16 @@ class LearningPageContent extends StatelessWidget {
               ),
 
               // * Learning Feedback
-              const FeedbackFragment(),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  const FeedbackFragment(),
+                  Button(
+                    label: "OK",
+                    onTap: () {},
+                  )
+                ],
+              )
             ],
           ),
         ],

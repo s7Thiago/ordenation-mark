@@ -8,7 +8,7 @@ class FeedbackFragment extends StatelessWidget {
     final size = MediaQuery.of(context).size;
 
     return Padding(
-      padding: EdgeInsets.only(right: size.width * .05, top: 100),
+      padding: EdgeInsets.only(right: size.width * .05, top: 50),
       child: Card(
         color: Colors.black12,
         elevation: 1,
