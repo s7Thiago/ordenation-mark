@@ -27,7 +27,7 @@ class MultiSelectionMethodWidget extends StatelessWidget {
     return Container(
       // margin: const EdgeInsets.only(left: 0, right: 0),
       width: size.width * .8,
-      height: 200,
+      height: 150,
       decoration: const BoxDecoration(
         color: Colors.transparent,
       ),

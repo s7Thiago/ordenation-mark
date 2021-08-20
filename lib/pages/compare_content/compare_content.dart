@@ -12,18 +12,25 @@ class ComparePageContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.center,
-      child: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            const MultiSelectionMethodWidget(),
-            const ComparingTable(),
-            const Padding(
-              padding: EdgeInsets.symmetric(vertical: 50),
-              child: ComparingChart(),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          const MultiSelectionMethodWidget(),
+          Expanded(
+            child: SizedBox(
+              width: 900,
+              child: ListView(
+                children: [
+                  const ComparingTable(),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(vertical: 20),
+                    child: ComparingChart(),
+                  ),
+                ],
+              ),
             ),
-          ],
-        ),
+          )
+        ],
       ),
     );
   }
