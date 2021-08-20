@@ -81,6 +81,10 @@ class ComparingTableProvider extends ChangeNotifier {
     ];
   }
 
+  void createSpot() {
+    
+  }
+
   void removeColumn(String label) {
     int index =
         _columns.indexWhere((element) => (element.label as Text).data == label);
