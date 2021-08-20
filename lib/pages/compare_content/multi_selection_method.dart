@@ -16,6 +16,7 @@ class MultiSelectionMethodWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<ComparingTableProvider>(context, listen: true);
+    final size = MediaQuery.of(context).size;
     final List<String> buttons = [
       'Bubble Sort',
       'Merge Sort',
@@ -24,26 +25,31 @@ class MultiSelectionMethodWidget extends StatelessWidget {
     ];
 
     return Container(
-      margin: const EdgeInsets.only(left: 200, right: 50),
-      width: 500,
-      height: 250,
+      // margin: const EdgeInsets.only(left: 0, right: 0),
+      width: size.width * .8,
+      height: 200,
       decoration: const BoxDecoration(
-        color: Colors.black26,
+        color: Colors.transparent,
       ),
       child: Column(
+        // mainAxisAlignment: MainAxisAlignment.center,
+        // crossAxisAlignment: CrossAxisAlignment.center,
         children: [
+          const SizedBox(height: 15),
           const Text(
             'Escolha os algoritmos para comparar',
+            style: TextStyle(fontSize: 25),
           ),
           Padding(
             padding: const EdgeInsets.only(top: 25.0),
             child: GroupButton(
               spacing: 15,
               isRadio: false,
-              buttonWidth: 250,
+              buttonWidth: 150,
               buttonHeight: 35,
               runSpacing: 15,
               buttons: buttons,
+              borderRadius: BorderRadius.circular(35),
               onSelected: (index, isSelected) async {
                 if (isSelected) {
                   // print('sizes: ${provider.sizes}');
