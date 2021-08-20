@@ -11,22 +11,27 @@ class ComparingTable extends StatelessWidget {
     final provider = Provider.of<ComparingTableProvider>(context, listen: true);
     final size = MediaQuery.of(context).size;
 
-    return Container(
-      width: size.width * .5,
-      height: 300,
-      decoration: const BoxDecoration(color: Colors.black26),
-      child: DataTable(
-        headingTextStyle: const TextStyle(
-          color: Colors.white,
-          fontWeight: FontWeight.bold,
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+          width: size.width * .5,
+          height: 300,
+          decoration: const BoxDecoration(color: Colors.black26),
+          child: DataTable(
+            headingTextStyle: const TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            ),
+            headingRowColor: MaterialStateProperty.all(Colors.black54),
+            dataTextStyle: const TextStyle(
+              color: Colors.white,
+            ),
+            columns: provider.columns,
+            rows: provider.rows,
+          ),
         ),
-        headingRowColor: MaterialStateProperty.all(Colors.black54),
-        dataTextStyle: const TextStyle(
-          color: Colors.white,
-        ),
-        columns: provider.columns,
-        rows: provider.rows,
-      ),
+      ],
     );
   }
 }

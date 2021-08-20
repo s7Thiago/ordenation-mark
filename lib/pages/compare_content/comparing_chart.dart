@@ -14,7 +14,7 @@ class ComparingChart extends StatelessWidget {
 
     return Container(
       width: size.width * .5,
-      height: 350,
+      height: 450,
       decoration: const BoxDecoration(color: Colors.black26),
       child: LineChart(
         LineChartData(
@@ -22,7 +22,30 @@ class ComparingChart extends StatelessWidget {
           maxX: provider.sizes.max()!.toDouble(),
           minY: 5,
           maxY: 15,
-          gridData: FlGridData(horizontalInterval: 1000.0),
+          axisTitleData: FlAxisTitleData(
+            show: true,
+            leftTitle: AxisTitle(
+              showTitle: true,
+              reservedSize: 30,
+              titleText: 'Tempo em ms',
+            ),
+            bottomTitle: AxisTitle(
+              showTitle: true,
+              reservedSize: 30,
+              titleText: 'Tamanho do vetor',
+            ),
+          ),
+          titlesData: FlTitlesData(
+            leftTitles: SideTitles(
+              showTitles: true,
+              reservedSize: 35,
+            ),
+            bottomTitles: SideTitles(
+              showTitles: true,
+              interval: 1500,
+              reservedSize: 20,
+            ),
+          ),
           lineBarsData: <LineChartBarData>[
             LineChartBarData(
               isCurved: true,

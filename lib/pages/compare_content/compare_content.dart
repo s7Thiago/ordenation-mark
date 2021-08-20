@@ -10,6 +10,8 @@ class ComparePageContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+
     return Container(
       alignment: Alignment.center,
       child: Column(
@@ -18,7 +20,7 @@ class ComparePageContent extends StatelessWidget {
           const MultiSelectionMethodWidget(),
           Expanded(
             child: SizedBox(
-              width: 900,
+              width: size.width * .7,
               child: ListView(
                 children: [
                   const ComparingTable(),
