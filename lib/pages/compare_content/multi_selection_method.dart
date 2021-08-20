@@ -3,11 +3,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:group_button/group_button.dart';
+import 'package:ordenation_mark/shared/providers/chart_provider.dart';
 import 'package:ordenation_mark/shared/providers/comparing_table_provider.dart';
 import 'package:ordenation_mark/shared/sorting/bubble.dart';
 import 'package:ordenation_mark/shared/sorting/heap.dart';
 import 'package:ordenation_mark/shared/sorting/insertion.dart';
 import 'package:ordenation_mark/shared/sorting/merge.dart';
+import 'package:ordenation_mark/shared/sorting/sorting_controller.dart';
 import 'package:provider/provider.dart';
 
 class MultiSelectionMethodWidget extends StatelessWidget {
@@ -16,6 +18,7 @@ class MultiSelectionMethodWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<ComparingTableProvider>(context, listen: true);
+    final chartProvider = Provider.of<ChartProvider>(context, listen: true);
     final size = MediaQuery.of(context).size;
     final List<String> buttons = [
       'Bubble Sort',
@@ -32,8 +35,6 @@ class MultiSelectionMethodWidget extends StatelessWidget {
         color: Colors.transparent,
       ),
       child: Column(
-        // mainAxisAlignment: MainAxisAlignment.center,
-        // crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           const SizedBox(height: 15),
           const Text(
@@ -53,28 +54,45 @@ class MultiSelectionMethodWidget extends StatelessWidget {
               onSelected: (index, isSelected) async {
                 if (isSelected) {
                   // print('sizes: ${provider.sizes}');
+                  final methodColor = provider.methodColor;
+
+                  chartProvider.newLineChart(buttons[index], methodColor);
+
                   switch (index) {
                     case 0:
                       print('$index - ${buttons[index]}');
-                      provider.addColumn(buttons[index], BubbleSort.sort);
+                      provider.updateSelectedMethod(
+                          OrdenationMethodEnum.bubbleSort);
+                      provider.addColumn(
+                          buttons[index], BubbleSort.sort, context);
                       break;
                     case 1:
                       print('$index - ${buttons[index]}');
-                      provider.addColumn(buttons[index], MergeSort.sort);
+                      provider
+                          .updateSelectedMethod(OrdenationMethodEnum.mergeSort);
+                      provider.addColumn(
+                          buttons[index], MergeSort.sort, context);
                       break;
                     case 2:
                       print('$index - ${buttons[index]}');
-                      provider.addColumn(buttons[index], HeapSort.sort);
+                      provider
+                          .updateSelectedMethod(OrdenationMethodEnum.heapSort);
+                      provider.addColumn(
+                          buttons[index], HeapSort.sort, context);
                       break;
                     case 3:
                       print('$index - ${buttons[index]}');
-                      provider.addColumn(buttons[index], InsertionSort.sort);
+                      provider.updateSelectedMethod(
+                          OrdenationMethodEnum.insertionSort);
+                      provider.addColumn(
+                          buttons[index], InsertionSort.sort, context);
                       break;
                     default:
                       print('$index - ${buttons[index]}');
                   }
                 } else {
                   provider.removeColumn(buttons[index]);
+                  chartProvider.removeLineChart(buttons[index]);
                 }
               },
               unselectedTextStyle: const TextStyle(color: Colors.grey),
@@ -83,6 +101,7 @@ class MultiSelectionMethodWidget extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
               unselectedColor: Colors.black38,
+              selectedColor: provider.methodColor,
             ),
           )
         ],

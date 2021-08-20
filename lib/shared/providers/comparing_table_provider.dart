@@ -1,13 +1,13 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
-import 'dart:developer';
-import 'dart:math';
-
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
+import 'package:ordenation_mark/shared/providers/chart_provider.dart';
 import 'package:ordenation_mark/shared/sorting/bubble.dart';
 import 'package:ordenation_mark/shared/sorting/sorting_controller.dart';
+import 'package:provider/provider.dart';
 
 class ComparingTableProvider extends ChangeNotifier {
   final List<DataColumn> _columns = [
@@ -22,7 +22,36 @@ class ComparingTableProvider extends ChangeNotifier {
     DataRow(cells: [DataCell(Text('20000'))]),
   ];
 
-  final List<double> _times = [];
+  final Map<String, List<double>> _times = {
+    'b': [],
+    'h': [],
+    'i': [],
+    'm': [],
+  };
+
+  OrdenationMethodEnum? _selectedMethod;
+
+  OrdenationMethodEnum? get selectedMethod => _selectedMethod;
+
+  updateSelectedMethod(OrdenationMethodEnum? methodEnum) {
+    _selectedMethod = methodEnum;
+    notifyListeners();
+  }
+
+  Color get methodColor {
+    switch (_selectedMethod) {
+      case OrdenationMethodEnum.bubbleSort:
+        return Colors.amber;
+      case OrdenationMethodEnum.mergeSort:
+        return Colors.green;
+      case OrdenationMethodEnum.heapSort:
+        return Colors.deepOrange;
+      case OrdenationMethodEnum.insertionSort:
+        return Colors.purple;
+      default:
+        return Colors.black;
+    }
+  }
 
   List<int> get sizes {
     return _rows
@@ -32,15 +61,10 @@ class ComparingTableProvider extends ChangeNotifier {
 
   List<DataColumn> get columns => _columns;
   List<DataRow> get rows => _rows;
-  List<double> get times => _times;
+  Map<String, List<double>> get times => _times;
 
-  Future<String> getString({double executionTime = 0.0}) async {
-    return await Future.delayed(Duration(milliseconds: executionTime.toInt()))
-        .then((value) => Future.value('String demorada'));
-  }
-
-  Future<void> addColumn(
-      String label, List<int> Function(List<int>) method) async {
+  Future<void> addColumn(String label, List<int> Function(List<int>) method,
+      BuildContext context) async {
     _columns.add(DataColumn(label: Text(label)));
     // await fillColumn();
 
@@ -53,36 +77,39 @@ class ComparingTableProvider extends ChangeNotifier {
       int entrySize = int.parse((row.cells[0].child as Text).data!);
       List<int> input = SortingController.generateRandomList(entrySize);
 
-      await Future.delayed(Duration(seconds: 4)).then((value) {
+      await Future.delayed(Duration(seconds: 3)).then((value) {
         double executionTime = SortingController.getExecutionTime(
           BubbleSort.sort,
           input,
         );
         row.cells.removeLast();
-        row.cells.add(DataCell(Text('$executionTime ms')));
+        row.cells.add(DataCell(Text(
+          '$executionTime ms',
+          style: TextStyle(
+            color: methodColor,
+            fontWeight: FontWeight.bold,
+          ),
+        )));
         notifyListeners();
 
         return executionTime;
       }).then((value) {
-        // Após encontrar o tempo, adiciona ao gráfico
-        _times.add(value);
+        // Após encontrar o tempo, adiciona ao map que será plotado no gráfico
+        _times[label[0].toLowerCase()]!.add(value);
+
+        // addSpot(label, time: value, size: entrySize);
+        Provider.of<ChartProvider>(context, listen: false).addSpot(
+          label,
+          time: value,
+          size: entrySize,
+          methodColor: methodColor,
+        );
+
         print('$value Added to chart: $_times');
         notifyListeners();
       });
       // print('Esperando...');
     }
-  }
-
-  List<FlSpot> get spots {
-    return [
-      FlSpot(1500, 7),
-      FlSpot(2500, 10),
-      FlSpot(11000, 14),
-    ];
-  }
-
-  void createSpot() {
-    
   }
 
   void removeColumn(String label) {
@@ -93,6 +120,9 @@ class ComparingTableProvider extends ChangeNotifier {
     for (var row in _rows) {
       row.cells.removeAt(index);
     }
+
+    // Remove todos os tempos gravados para esse label
+    _times[label[0].toLowerCase()] = [];
 
     notifyListeners();
   }
