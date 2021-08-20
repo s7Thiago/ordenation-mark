@@ -1,6 +1,6 @@
 class BubbleSort {
   // Método que realiza uma ordenação por bubble sort
-  static List<int> sort(List<int> list) {
+  static Future<List<int>> sort(List<int> list) async {
     for (int i = 0; i < list.length; i++) {
       for (int j = 0; j < list.length - 1; j++) {
         if (list[j] > list[j + 1]) {
@@ -10,6 +10,6 @@ class BubbleSort {
         }
       }
     }
-    return list;
+    return Future.value(list);
   }
 }
