@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:ordenation_mark/shared/providers/method_selection.dart';
+import 'package:provider/provider.dart';
 
 class FeedbackFragment extends StatelessWidget {
   const FeedbackFragment({Key? key}) : super(key: key);
@@ -6,6 +8,7 @@ class FeedbackFragment extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final methodProvider = Provider.of<MethodSelection>(context);
 
     return Padding(
       padding: EdgeInsets.only(right: size.width * .05, top: 50),
@@ -21,8 +24,8 @@ class FeedbackFragment extends StatelessWidget {
               children: [
                 Container(
                   margin: const EdgeInsets.only(top: 40, bottom: 20),
-                  child: const Text(
-                    "TEMPO DE ORDENAÇÃO PELO INSERTION SORT",
+                  child: Text(
+                    "TEMPO DE ORDENAÇÃO PELO ${methodProvider.title.toUpperCase()}",
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w600,
