@@ -50,9 +50,12 @@ class ComparingChart extends StatelessWidget {
             LineChartBarData(
               isCurved: true,
               spots: <FlSpot>[
-                ...provider.sizes
-                    .map((size) => FlSpot(10, size.toDouble()))
-                    .toList(),
+                // ...provider.sizes
+                //     .map((size) => FlSpot(size.toDouble(), 10))
+                //     .toList(),
+                ...provider.spots
+                // FlSpot(1000, 10),
+                // FlSpot(1500, 11),
               ],
             ),
           ],

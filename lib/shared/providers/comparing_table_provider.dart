@@ -3,6 +3,7 @@
 import 'dart:developer';
 import 'dart:math';
 
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ordenation_mark/shared/sorting/bubble.dart';
@@ -21,6 +22,8 @@ class ComparingTableProvider extends ChangeNotifier {
     DataRow(cells: [DataCell(Text('20000'))]),
   ];
 
+  final List<double> _times = [];
+
   List<int> get sizes {
     return _rows
         .map((row) => int.parse((row.cells[0].child as Text).data!))
@@ -29,6 +32,7 @@ class ComparingTableProvider extends ChangeNotifier {
 
   List<DataColumn> get columns => _columns;
   List<DataRow> get rows => _rows;
+  List<double> get times => _times;
 
   Future<String> getString({double executionTime = 0.0}) async {
     return await Future.delayed(Duration(milliseconds: executionTime.toInt()))
@@ -61,10 +65,20 @@ class ComparingTableProvider extends ChangeNotifier {
         return executionTime;
       }).then((value) {
         // Após encontrar o tempo, adiciona ao gráfico
-        print('$value Added to chart');
+        _times.add(value);
+        print('$value Added to chart: $_times');
+        notifyListeners();
       });
       // print('Esperando...');
     }
+  }
+
+  List<FlSpot> get spots {
+    return [
+      FlSpot(1500, 7),
+      FlSpot(2500, 10),
+      FlSpot(11000, 14),
+    ];
   }
 
   void removeColumn(String label) {
