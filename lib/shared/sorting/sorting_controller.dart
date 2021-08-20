@@ -4,7 +4,7 @@ enum OrdenationMethodEnum { bubbleSort, mergeSort, heapSort, insertionSort }
 
 class SortingController {
 // Gera uma lista de números aleatórios sem duplicata de tamanho size
-  static List<int> generateRandomList(int size) {
+  static List<int> generateRandomListUnique(int size) {
     List<int> list = [];
 
     Random random = Random();
@@ -26,12 +26,22 @@ class SortingController {
     return list;
   }
 
+// Gera uma lista de números aleatórios de tamanho size
+  static List<int> generateRandomList(int size) {
+    List<int> list = [];
+    Random random = Random();
+    for (int i = 0; i < size; i++) {
+      list.add(random.nextInt(size));
+    }
+    return list;
+  }
+
   // Retorna o tempo de execução do algoritmo de ordenação
-  static Future getExecutionTime(Function sortFunction, List<int> list) async {
+  static double getExecutionTime(Function sortFunction, List<int> list) {
     Stopwatch stopwatch = Stopwatch();
     stopwatch.start();
-    await sortFunction(list);
+    sortFunction(list);
     stopwatch.stop();
-    return Future.value(stopwatch.elapsedMilliseconds / 1000);
+    return (stopwatch.elapsedMilliseconds / 1000);
   }
 }

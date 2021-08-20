@@ -14,7 +14,7 @@ class ComparingTable extends StatelessWidget {
     return Container(
       width: size.width * .5,
       height: 300,
-      decoration: BoxDecoration(color: Colors.black26),
+      decoration: const BoxDecoration(color: Colors.black26),
       child: DataTable(
         headingTextStyle: const TextStyle(
           color: Colors.white,
@@ -26,7 +26,6 @@ class ComparingTable extends StatelessWidget {
         ),
         columns: provider.columns,
         rows: provider.rows,
-        
       ),
     );
   }
