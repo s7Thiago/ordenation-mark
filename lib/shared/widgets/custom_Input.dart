@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 
 class CustomInput extends StatelessWidget {
   final String label;
+  final Function(String) onChange;
 
-  CustomInput({Key? key, required this.label}) : super(key: key);
+  CustomInput({Key? key, required this.label, required this.onChange})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +35,7 @@ class CustomInput extends StatelessWidget {
             children: [
               Expanded(
                 child: TextField(
+                  onChanged: onChange,
                   style: TextStyle(fontSize: 18),
                   decoration: InputDecoration(
                     border: InputBorder.none,

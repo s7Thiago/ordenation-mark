@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:ordenation_mark/pages/learning_content/feedback_fragment.dart';
 import 'package:ordenation_mark/pages/learning_content/method_selection_radio_group.dart';
+import 'package:ordenation_mark/shared/providers/input_provider.dart';
 import 'package:ordenation_mark/shared/widgets/button.dart';
 import 'package:ordenation_mark/shared/widgets/custom_Input.dart';
+import 'package:provider/provider.dart';
 
 enum OrdenationMethodEnum { bubbleSort, mergeSort, heapSort, insertionSort }
 
@@ -11,6 +13,8 @@ class LearningPageContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<InputProvider>(context, listen: true);
+
     return Container(
       margin: const EdgeInsets.only(left: 257, top: 29),
       alignment: Alignment.center,
@@ -19,9 +23,19 @@ class LearningPageContent extends StatelessWidget {
         children: [
           Row(
             children: [
-              CustomInput(label: "TAMANHO DO VETOR"),
+              CustomInput(
+                label: "TAMANHO DO VETOR",
+                onChange: (String text) {
+                  provider.updateVetor(int.parse(text));
+                },
+              ),
               const SizedBox(width: 200),
-              CustomInput(label: "VALORES PARA FAZER A MEDIA"),
+              CustomInput(
+                label: "VALORES PARA FAZER A MEDIA",
+                onChange: (String text) {
+                  provider.updateMedia(int.parse(text));
+                },
+              ),
             ],
           ),
           Row(
