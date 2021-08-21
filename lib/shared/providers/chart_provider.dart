@@ -33,16 +33,6 @@ class ChartProvider extends ChangeNotifier {
       colors: [methodColor],
       isCurved: true,
     );
-    // // Reseta os spots do alvo no gráfico
-    // (_lineCharts[label[0].toLowerCase()]!['chart'] as LineChartBarData)
-    //     .spots
-    //     .clear();
-
-    // // Atribui a nova lista de spots ao alvo no gráfico
-    // (_lineCharts[label[0].toLowerCase()]!['chart'] as LineChartBarData)
-    //     .spots
-    //     .addAll(_lineCharts[label[0].toLowerCase()]!['spots']);
-
     notifyListeners();
   }
 
