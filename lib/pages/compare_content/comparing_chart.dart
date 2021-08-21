@@ -50,23 +50,9 @@ class ComparingChart extends StatelessWidget {
             ),
           ),
           lineBarsData: <LineChartBarData>[
-            // ! Method 1
-            // LineChartBarData(
-            //   isCurved: true,
-            //   colors: [provider.methodColor],
-            //   spots: <FlSpot>[
-            //     // ...provider.sizes
-            //     //     .map((size) => FlSpot(size.toDouble(), 10))
-            //     //     .toList(),
-            //     ...provider.spots
-            //   ],
-            // ),
-
             ...chartProvider.lineCharts.values.map((e) => e['chart']).toList(),
           ],
         ),
-        swapAnimationDuration: const Duration(milliseconds: 500),
-        swapAnimationCurve: Curves.linear,
       ),
     );
   }
