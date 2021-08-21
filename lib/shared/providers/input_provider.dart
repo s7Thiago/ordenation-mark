@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:ordenation_mark/pages/learning_content/learning_content.dart';
-import 'package:ordenation_mark/shared/sorting/sorting_controller.dart';
+import 'package:ordenation_mark/shared/providers/chart_provider.dart';
 
 class InputProvider extends ChangeNotifier {
   int valorVetor = 0;
@@ -13,7 +13,7 @@ class InputProvider extends ChangeNotifier {
     OrdenationMethodEnum.mergeSort: <double>[]
   };
 
-  executeSort(int tamanho, int qtde) {
+  executeSort(int tamanho, int qtde, OrdenationMethodEnum method) {
     for (var i = 0; i < qtde; i++) {
       for (var j = 0; j < tamanho; j++) {}
     }
