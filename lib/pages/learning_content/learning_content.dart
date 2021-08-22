@@ -15,85 +15,84 @@ class LearningPageContent extends StatelessWidget {
   Widget build(BuildContext context) {
     final provider = Provider.of<InputProvider>(context, listen: true);
 
-    return Container(
-      margin: const EdgeInsets.only(left: 257, top: 29),
-      alignment: Alignment.center,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              CustomInput(
-                label: "QUANTIDADE DE ITENS NO VETOR GERADO",
-                onChange: (String text) {
-                  if (text.isEmpty) {
-                    text = '0';
-                  }
-
-                  if (text.isEmpty) {
-                    text = '0';
-                  }
-
-                  if (int.parse(text) < provider.tamanhoVetorMax) {
-                    if (text.isNotEmpty) {
-                      provider.updateTamanhoVetor(int.parse(text));
-                    } else {
+    return SingleChildScrollView(
+      child: Container(
+        margin: const EdgeInsets.only(left: 257, top: 29),
+        alignment: Alignment.center,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Wrap(
+              children: [
+                CustomInput(
+                  label:
+                      "QUANTIDADE DE ITENS NO VETOR GERADO(VALOR ATÉ ${provider.tamanhoVetorMax})",
+                  onChange: (String text) {
+                    if (text.isEmpty) {
                       text = '0';
+                    }
+
+                    if (int.parse(text) < provider.tamanhoVetorMax) {
+                      if (text.isNotEmpty) {
+                        provider.updateTamanhoVetor(int.parse(text));
+                      } else {
+                        text = '0';
+                        provider.updateTamanhoVetor(int.parse(text));
+                      }
+                    } else {
+                      text = '${provider.tamanhoVetorMax}';
                       provider.updateTamanhoVetor(int.parse(text));
                     }
-                  } else {
-                    text = '${provider.tamanhoVetorMax}';
-                    provider.updateTamanhoVetor(int.parse(text));
-                  }
-                },
-              ),
-              const SizedBox(width: 200),
-              CustomInput(
-                label: "QUANTAS COMPARAÇÕES FAZER (VALOR ATÉ 10)",
-                onChange: (String text) {
-                  if (text.isEmpty) {
-                    text = '0';
-                  }
-
-                  if (int.parse(text) < provider.qtdeComparacoesMax) {
-                    if (text.isNotEmpty) {
-                      provider.updateQtdeComparacoes(int.parse(text));
-                    } else {
+                  },
+                ),
+                const SizedBox(width: 200),
+                CustomInput(
+                  label:
+                      "QUANTAS COMPARAÇÕES FAZER (VALOR ATÉ ${provider.qtdeComparacoesMax})",
+                  onChange: (String text) {
+                    if (text.isEmpty) {
                       text = '0';
+                    }
+
+                    if (int.parse(text) < provider.qtdeComparacoesMax) {
+                      if (text.isNotEmpty) {
+                        provider.updateQtdeComparacoes(int.parse(text));
+                      } else {
+                        text = '0';
+                        provider.updateQtdeComparacoes(int.parse(text));
+                      }
+                    } else {
+                      text = '${provider.qtdeComparacoesMax}';
                       provider.updateQtdeComparacoes(int.parse(text));
                     }
-                  } else {
-                    text = '${provider.qtdeComparacoesMax}';
-                    provider.updateQtdeComparacoes(int.parse(text));
-                  }
-                },
-              ),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                width: 250,
-                margin: const EdgeInsets.only(top: 80),
-                child: const MethodSelectRadioGroup(),
-              ),
+                  },
+                ),
+              ],
+            ),
+            Wrap(
+              spacing: 150,
+              children: [
+                Container(
+                  width: 250,
+                  margin: const EdgeInsets.only(top: 80),
+                  child: const MethodSelectRadioGroup(),
+                ),
 
-              // * Learning Feedback
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  const FeedbackFragment(),
-                  Button(
-                    label: "OK",
-                    onTap: () {},
-                  )
-                ],
-              )
-            ],
-          ),
-        ],
+                // * Learning Feedback
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    const FeedbackFragment(),
+                    Button(
+                      label: "OK",
+                      onTap: () {},
+                    )
+                  ],
+                )
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
