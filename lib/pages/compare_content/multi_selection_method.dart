@@ -43,65 +43,74 @@ class MultiSelectionMethodWidget extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.only(top: 25.0),
-            child: GroupButton(
-              spacing: 15,
-              isRadio: false,
-              buttonWidth: 150,
-              buttonHeight: 35,
-              runSpacing: 15,
-              buttons: buttons,
-              borderRadius: BorderRadius.circular(35),
-              onSelected: (index, isSelected) async {
-                if (isSelected) {
-                  // print('sizes: ${provider.sizes}');
-                  final methodColor = provider.methodColor;
+            child: AnimatedOpacity(
+              duration: const Duration(milliseconds: 900),
+              opacity: provider.isUiLocked ? 0 : 1,
+              child: IgnorePointer(
+                ignoring: provider.isUiLocked,
+                child: GroupButton(
+                  spacing: 120,
+                  isRadio: false,
+                  buttonWidth: 150,
+                  buttonHeight: 35,
+                  runSpacing: 15,
+                  buttons: buttons,
+                  borderRadius: BorderRadius.circular(35),
+                  onSelected: (index, isSelected) async {
+                    if (isSelected) {
+                      // print('sizes: ${provider.sizes}');
 
-                  chartProvider.newLineChart(buttons[index], methodColor);
+                      final methodColor = provider.methodColor;
 
-                  switch (index) {
-                    case 0:
-                      print('$index - ${buttons[index]}');
-                      provider.updateSelectedMethod(
-                          OrdenationMethodEnum.bubbleSort);
-                      provider.addColumn(
-                          buttons[index], BubbleSort.sort, context);
-                      break;
-                    case 1:
-                      print('$index - ${buttons[index]}');
-                      provider
-                          .updateSelectedMethod(OrdenationMethodEnum.mergeSort);
-                      provider.addColumn(
-                          buttons[index], MergeSort.sort, context);
-                      break;
-                    case 2:
-                      print('$index - ${buttons[index]}');
-                      provider
-                          .updateSelectedMethod(OrdenationMethodEnum.heapSort);
-                      provider.addColumn(
-                          buttons[index], HeapSort.sort, context);
-                      break;
-                    case 3:
-                      print('$index - ${buttons[index]}');
-                      provider.updateSelectedMethod(
-                          OrdenationMethodEnum.insertionSort);
-                      provider.addColumn(
-                          buttons[index], InsertionSort.sort, context);
-                      break;
-                    default:
-                      print('$index - ${buttons[index]}');
-                  }
-                } else {
-                  provider.removeColumn(buttons[index]);
-                  chartProvider.removeLineChart(buttons[index]);
-                }
-              },
-              unselectedTextStyle: const TextStyle(color: Colors.grey),
-              selectedTextStyle: const TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
+                      provider.switchUiLock();
+                      chartProvider.newLineChart(buttons[index], methodColor);
+
+                      switch (index) {
+                        case 0:
+                          print('$index - ${buttons[index]}');
+                          provider.updateSelectedMethod(
+                              OrdenationMethodEnum.bubbleSort);
+                          provider.addColumn(
+                              buttons[index], BubbleSort.sort, context);
+                          break;
+                        case 1:
+                          print('$index - ${buttons[index]}');
+                          provider.updateSelectedMethod(
+                              OrdenationMethodEnum.mergeSort);
+                          provider.addColumn(
+                              buttons[index], MergeSort.sort, context);
+                          break;
+                        case 2:
+                          print('$index - ${buttons[index]}');
+                          provider.updateSelectedMethod(
+                              OrdenationMethodEnum.heapSort);
+                          provider.addColumn(
+                              buttons[index], HeapSort.sort, context);
+                          break;
+                        case 3:
+                          print('$index - ${buttons[index]}');
+                          provider.updateSelectedMethod(
+                              OrdenationMethodEnum.insertionSort);
+                          provider.addColumn(
+                              buttons[index], InsertionSort.sort, context);
+                          break;
+                        default:
+                          print('$index - ${buttons[index]}');
+                      }
+                    } else {
+                      provider.removeColumn(buttons[index]);
+                      chartProvider.removeLineChart(buttons[index]);
+                    }
+                  },
+                  unselectedTextStyle: const TextStyle(color: Colors.grey),
+                  selectedTextStyle: const TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  unselectedColor: Colors.black38,
+                  selectedColor: Colors.indigo,
+                ),
               ),
-              unselectedColor: Colors.black38,
-              selectedColor: provider.methodColor,
             ),
           )
         ],

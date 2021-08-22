@@ -20,10 +20,10 @@ class ComparingChart extends StatelessWidget {
       decoration: const BoxDecoration(color: Colors.black26),
       child: LineChart(
         LineChartData(
-          minX: provider.sizes.min()!.toDouble() * 0,
-          maxX: provider.sizes.max()!.toDouble() + 5000,
+          minX: provider.sizes.min()!.toDouble() * .1,
+          maxX: provider.sizes.max()!.toDouble() + 15000,
           minY: 0,
-          maxY: provider.maxTime + .3,
+          maxY: provider.maxTime + 1.5,
           axisTitleData: FlAxisTitleData(
             show: true,
             leftTitle: AxisTitle(
@@ -41,7 +41,7 @@ class ComparingChart extends StatelessWidget {
             leftTitles: SideTitles(
               showTitles: true,
               reservedSize: 35,
-              interval: .25,
+              interval: 1.2,
             ),
             bottomTitles: SideTitles(
               showTitles: true,

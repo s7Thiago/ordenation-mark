@@ -16,10 +16,10 @@ class ComparingTableProvider extends ChangeNotifier {
 
   final List<DataRow> _rows = [
     DataRow(cells: [DataCell(Text('1000'))]),
-    DataRow(cells: [DataCell(Text('3000'))]),
+    DataRow(cells: [DataCell(Text('5000'))]),
     DataRow(cells: [DataCell(Text('10000'))]),
-    DataRow(cells: [DataCell(Text('15000'))]),
-    DataRow(cells: [DataCell(Text('20000'))]),
+    DataRow(cells: [DataCell(Text('30000'))]),
+    DataRow(cells: [DataCell(Text('50000'))]),
   ];
 
   final Map<String, List<double>> _times = {
@@ -37,7 +37,7 @@ class ComparingTableProvider extends ChangeNotifier {
     if (_maxTime < newValue) {
       _maxTime = newValue;
     } else {
-      _maxTime = maxTime + .0000000001;
+      _maxTime = maxTime - .04;
     }
 
     notifyListeners();
@@ -74,6 +74,15 @@ class ComparingTableProvider extends ChangeNotifier {
         .toList();
   }
 
+  bool _isUiLocked = false;
+
+  bool get isUiLocked => _isUiLocked;
+
+  void switchUiLock() {
+    _isUiLocked = !_isUiLocked;
+    notifyListeners();
+  }
+
   List<DataColumn> get columns => _columns;
   List<DataRow> get rows => _rows;
   Map<String, List<double>> get times => _times;
@@ -92,7 +101,8 @@ class ComparingTableProvider extends ChangeNotifier {
       int entrySize = int.parse((row.cells[0].child as Text).data!);
       List<int> input = SortingController.generateRandomList(entrySize);
 
-      await Future.delayed(Duration(seconds: 3)).then((value) {
+      await Future.delayed(Duration(milliseconds: (entrySize * .3).toInt()))
+          .then((value) {
         double executionTime = SortingController.getExecutionTime(
           BubbleSort.sort,
           input,
@@ -122,11 +132,13 @@ class ComparingTableProvider extends ChangeNotifier {
           methodColor: methodColor,
         );
 
-        print('$value Added to chart: $_times');
+        // print('$value Added to chart: $_times');
         notifyListeners();
       });
-      // print('Esperando...');
     }
+
+    // Se a interface estiver bloqueada, desbloqueia
+    if (_isUiLocked) switchUiLock();
   }
 
   void removeColumn(String label) {
@@ -140,6 +152,10 @@ class ComparingTableProvider extends ChangeNotifier {
 
     // Remove todos os tempos gravados para esse label
     _times[label[0].toLowerCase()] = [];
+
+    if (_columns.length == 0) {
+      _maxTime = 0.0;
+    }
 
     notifyListeners();
   }
