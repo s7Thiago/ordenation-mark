@@ -104,7 +104,7 @@ class ComparingTableProvider extends ChangeNotifier {
 
       await Future.delayed(
         Duration(
-          milliseconds: (entrySize * (Random().nextInt(40) / 100)).toInt(),
+          milliseconds: (entrySize * (Random().nextInt(50) / 100)).toInt(),
         ),
       ).then((value) {
         double executionTime = SortingController.getExecutionTime(

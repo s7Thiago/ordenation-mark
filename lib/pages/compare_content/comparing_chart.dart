@@ -21,7 +21,7 @@ class ComparingChart extends StatelessWidget {
       child: LineChart(
         LineChartData(
           minX: provider.sizes.min()!.toDouble() * .1,
-          maxX: provider.sizes.max()!.toDouble() + 15000,
+          maxX: provider.sizes.max()!.toDouble() + 10000,
           minY: 0,
           maxY: provider.maxTime + 1.5,
           axisTitleData: FlAxisTitleData(
