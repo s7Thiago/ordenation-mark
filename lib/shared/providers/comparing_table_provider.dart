@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -7,7 +9,6 @@ import 'package:ordenation_mark/shared/providers/chart_provider.dart';
 import 'package:ordenation_mark/shared/sorting/bubble.dart';
 import 'package:ordenation_mark/shared/sorting/sorting_controller.dart';
 import 'package:provider/provider.dart';
-import 'package:supercharged/supercharged.dart';
 
 class ComparingTableProvider extends ChangeNotifier {
   final List<DataColumn> _columns = [
@@ -29,7 +30,7 @@ class ComparingTableProvider extends ChangeNotifier {
     'm': <double>[],
   };
 
-  double _maxTime = 1.0;
+  double _maxTime = .5;
 
   double get maxTime => _maxTime;
 
@@ -101,21 +102,33 @@ class ComparingTableProvider extends ChangeNotifier {
       int entrySize = int.parse((row.cells[0].child as Text).data!);
       List<int> input = SortingController.generateRandomList(entrySize);
 
-      await Future.delayed(Duration(milliseconds: (entrySize * .35).toInt()))
-          .then((value) {
+      await Future.delayed(
+        Duration(
+          milliseconds: (entrySize * (Random().nextInt(40) / 100)).toInt(),
+        ),
+      ).then((value) {
         double executionTime = SortingController.getExecutionTime(
           BubbleSort.sort,
           input,
         );
+
         row.cells.removeLast();
-        row.cells.add(DataCell(Text(
-          '$executionTime ms',
-          style: TextStyle(
-            color: methodColor,
-            fontWeight: FontWeight.bold,
+        row.cells.add(
+          DataCell(
+            Text(
+              '$executionTime ms',
+              style: TextStyle(
+                color: methodColor,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
           ),
-        )));
+        );
+
         notifyListeners();
+
+        // Temp adicional para a interface descansar
+        Future.delayed(Duration(milliseconds: 1800));
 
         return executionTime;
       }).then((value) {

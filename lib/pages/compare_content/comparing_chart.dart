@@ -41,7 +41,7 @@ class ComparingChart extends StatelessWidget {
             leftTitles: SideTitles(
               showTitles: true,
               reservedSize: 35,
-              interval: 1.2,
+              interval: provider.maxTime * .2,
             ),
             bottomTitles: SideTitles(
               showTitles: true,
