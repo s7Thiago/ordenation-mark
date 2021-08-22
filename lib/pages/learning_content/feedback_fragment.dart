@@ -18,35 +18,35 @@ class FeedbackFragment extends StatelessWidget {
         color: Colors.black12,
         elevation: 1,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
-        child: SingleChildScrollView(
-          child: Container(
-            width: size.width * .5,
-            height: size.height * .6,
-            child: Column(
-              children: [
-                Container(
-                  margin: const EdgeInsets.only(top: 40, bottom: 20),
-                  child: Text(
-                    "TEMPO DE ORDENAÇÃO PELO ${methodProvider.title.toUpperCase()}",
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w600,
-                    ),
+        child: SizedBox(
+          width: size.width * .5,
+          height: size.height * .6,
+          child: Column(
+            children: [
+              Container(
+                margin: const EdgeInsets.only(top: 40, bottom: 20),
+                child: Text(
+                  "TEMPOS DE ORDENAÇÃO DO ${methodProvider.title.toUpperCase()}",
+                  style: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
-                Column(
+              ),
+              SingleChildScrollView(
+                child: Column(
                   children: [
                     ...List.generate(
-                      inputProvider.tamanhoVetor,
+                      inputProvider.qtdeComparacoes,
                       (index) => Container(
                         margin: const EdgeInsets.only(bottom: 20),
                         child: const Text("Tempo 1 levou 503 ms"),
                       ),
                     ),
                   ],
-                )
-              ],
-            ),
+                ),
+              )
+            ],
           ),
         ),
       ),

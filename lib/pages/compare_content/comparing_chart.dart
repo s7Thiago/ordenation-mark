@@ -22,8 +22,8 @@ class ComparingChart extends StatelessWidget {
         LineChartData(
           minX: provider.sizes.min()!.toDouble() * .1,
           maxX: provider.sizes.max()!.toDouble() + 10000,
-          minY: 0,
-          maxY: provider.maxTime + 1.5,
+          minY: provider.minTime - 5,
+          maxY: provider.maxTime + 5,
           axisTitleData: FlAxisTitleData(
             show: true,
             leftTitle: AxisTitle(
@@ -41,7 +41,8 @@ class ComparingChart extends StatelessWidget {
             leftTitles: SideTitles(
               showTitles: true,
               reservedSize: 35,
-              interval: provider.maxTime * .2,
+              interval:
+                  (provider.maxTime * 5) * (provider.maxTime < 1 ? .7 : .07),
             ),
             bottomTitles: SideTitles(
               showTitles: true,

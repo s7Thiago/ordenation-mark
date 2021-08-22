@@ -6,7 +6,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:ordenation_mark/shared/providers/chart_provider.dart';
-import 'package:ordenation_mark/shared/sorting/bubble.dart';
 import 'package:ordenation_mark/shared/sorting/sorting_controller.dart';
 import 'package:provider/provider.dart';
 
@@ -31,8 +30,10 @@ class ComparingTableProvider extends ChangeNotifier {
   };
 
   double _maxTime = .5;
+  double _minTime = .3;
 
   double get maxTime => _maxTime;
+  double get minTime => _minTime;
 
   updateMaxTime(double newValue) {
     if (_maxTime < newValue) {
@@ -42,7 +43,15 @@ class ComparingTableProvider extends ChangeNotifier {
     }
 
     notifyListeners();
-    print('                                               (max: $maxTime)');
+    print('                  (max: $maxTime)');
+  }
+
+  updateMinTime(double newValue) {
+    if (newValue < _minTime) {
+      _minTime = newValue;
+    } else {
+      _minTime = minTime + .00004;
+    }
   }
 
   OrdenationMethodEnum? _selectedMethod;
@@ -104,11 +113,11 @@ class ComparingTableProvider extends ChangeNotifier {
 
       await Future.delayed(
         Duration(
-          milliseconds: (entrySize * (Random().nextInt(50) / 100)).toInt(),
+          milliseconds: (entrySize * (Random().nextInt(15) / 100)).toInt(),
         ),
       ).then((value) {
         double executionTime = SortingController.getExecutionTime(
-          BubbleSort.sort,
+          method,
           input,
         );
 
@@ -167,7 +176,8 @@ class ComparingTableProvider extends ChangeNotifier {
     _times[label[0].toLowerCase()] = [];
 
     if (_columns.length == 0) {
-      _maxTime = 0.0;
+      updateMaxTime(0.001);
+      updateMinTime(0.0001);
     }
 
     notifyListeners();

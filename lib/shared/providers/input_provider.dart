@@ -4,7 +4,10 @@ import 'package:ordenation_mark/shared/providers/chart_provider.dart';
 
 class InputProvider extends ChangeNotifier {
   int tamanhoVetor = 0;
+  int tamanhoVetorMax = 50000;
+
   int qtdeComparacoes = 0;
+  int qtdeComparacoesMax = 10;
 
   final timesMap = {
     OrdenationMethodEnum.bubbleSort: <double>[],

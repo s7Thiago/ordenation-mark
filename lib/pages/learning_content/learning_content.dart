@@ -14,6 +14,10 @@ class LearningPageContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<InputProvider>(context, listen: true);
+    final qtdeItensInputController =
+        TextEditingController(text: '${provider.tamanhoVetor}');
+    final qtdeComparacoesInputController =
+        TextEditingController(text: '${provider.qtdeComparacoes}');
 
     return Container(
       margin: const EdgeInsets.only(left: 257, top: 29),
@@ -24,24 +28,53 @@ class LearningPageContent extends StatelessWidget {
           Row(
             children: [
               CustomInput(
-                label: "TAMANHO DO VETOR",
+                label: "QUANTIDADE DE ITENS NO VETOR GERADO",
+                controller: qtdeItensInputController,
                 onChange: (String text) {
-                  if (text.isNotEmpty) {
-                    provider.updateTamanhoVetor(int.parse(text));
-                  } else {
+                  if (text.isEmpty) {
                     text = '0';
-                    provider.updateTamanhoVetor(int.parse(text));
+                  }
+
+                  if (/* qtdeItensInputController. */ text.isEmpty) {
+                    /* qtdeItensInputController. */ text = '0';
+                  }
+
+                  if (int.parse(text) < provider.tamanhoVetorMax) {
+                    if (text.isNotEmpty) {
+                      provider.updateTamanhoVetor(
+                          int.parse(/* qtdeItensInputController. */ text));
+                    } else {
+                      /* qtdeItensInputController. */ text = '0';
+                      provider.updateTamanhoVetor(
+                          int.parse(/* qtdeItensInputController. */ text));
+                    }
+                  } else {
+                    /* qtdeItensInputController. */ text =
+                        '${provider.tamanhoVetorMax}';
+                    provider.updateTamanhoVetor(
+                        int.parse(/* qtdeItensInputController. */ text));
                   }
                 },
               ),
               const SizedBox(width: 200),
               CustomInput(
-                label: "VALORES PARA FAZER A MEDIA",
+                label: "QUANTAS COMPARAÇÕES FAZER (VALOR ATÉ 10)",
+                controller: qtdeComparacoesInputController,
                 onChange: (String text) {
-                  if (text.isNotEmpty) {
-                    provider.updateQtdeComparacoes(int.parse(text));
+                  if (text.isEmpty) {
+                    /* qtdeComparacoesInputController. */ text = '0';
+                  }
+
+                  if (int.parse(text) < provider.qtdeComparacoesMax) {
+                    if (text.isNotEmpty) {
+                      provider.updateQtdeComparacoes(int.parse(text));
+                    } else {
+                      /* qtdeComparacoesInputController. */ text = '0';
+                      provider.updateQtdeComparacoes(int.parse(text));
+                    }
                   } else {
-                    text = '0';
+                    /* qtdeComparacoesInputController. */ text =
+                        '${provider.qtdeComparacoesMax}';
                     provider.updateQtdeComparacoes(int.parse(text));
                   }
                 },

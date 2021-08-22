@@ -1,11 +1,18 @@
+// ignore_for_file: prefer_const_constructors_in_immutables, file_names, prefer_const_constructors
+
 import 'package:flutter/material.dart';
 
 class CustomInput extends StatelessWidget {
   final String label;
   final Function(String) onChange;
+  final TextEditingController? controller;
 
-  CustomInput({Key? key, required this.label, required this.onChange})
-      : super(key: key);
+  CustomInput({
+    Key? key,
+    required this.label,
+    required this.onChange,
+    this.controller,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -36,10 +43,14 @@ class CustomInput extends StatelessWidget {
               Expanded(
                 child: TextField(
                   onChanged: onChange,
+                  // controller: controller,
+                  toolbarOptions: ToolbarOptions(cut: true),
                   style: TextStyle(fontSize: 18),
                   decoration: InputDecoration(
                     border: InputBorder.none,
                   ),
+                  keyboardType: TextInputType.number,
+                  cursorRadius: Radius.circular(8),
                 ),
               ),
             ],
