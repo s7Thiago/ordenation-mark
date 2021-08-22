@@ -26,14 +26,24 @@ class LearningPageContent extends StatelessWidget {
               CustomInput(
                 label: "TAMANHO DO VETOR",
                 onChange: (String text) {
-                  provider.updateVetor(int.parse(text));
+                  if (text.isNotEmpty) {
+                    provider.updateTamanhoVetor(int.parse(text));
+                  } else {
+                    text = '0';
+                    provider.updateTamanhoVetor(int.parse(text));
+                  }
                 },
               ),
               const SizedBox(width: 200),
               CustomInput(
                 label: "VALORES PARA FAZER A MEDIA",
                 onChange: (String text) {
-                  provider.updateMedia(int.parse(text));
+                  if (text.isNotEmpty) {
+                    provider.updateQtdeComparacoes(int.parse(text));
+                  } else {
+                    text = '0';
+                    provider.updateQtdeComparacoes(int.parse(text));
+                  }
                 },
               ),
             ],

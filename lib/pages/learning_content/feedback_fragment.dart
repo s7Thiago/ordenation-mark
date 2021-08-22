@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ordenation_mark/shared/providers/input_provider.dart';
 import 'package:ordenation_mark/shared/providers/method_selection.dart';
 import 'package:provider/provider.dart';
 
@@ -9,6 +10,7 @@ class FeedbackFragment extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final methodProvider = Provider.of<MethodSelection>(context);
+    final inputProvider = Provider.of<InputProvider>(context, listen: true);
 
     return Padding(
       padding: EdgeInsets.only(right: size.width * .05, top: 50),
@@ -34,19 +36,13 @@ class FeedbackFragment extends StatelessWidget {
                 ),
                 Column(
                   children: [
-                    Container(
-                      margin: EdgeInsets.only(bottom: 20),
-                      child: Text("Tempo 1 levou 503 ms"),
+                    ...List.generate(
+                      inputProvider.tamanhoVetor,
+                      (index) => Container(
+                        margin: const EdgeInsets.only(bottom: 20),
+                        child: const Text("Tempo 1 levou 503 ms"),
+                      ),
                     ),
-                    Container(
-                      margin: EdgeInsets.only(bottom: 20),
-                      child: Text("Tempo 2 levou 200 ms"),
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(bottom: 20),
-                      child: Text("Tempo 3 levou 350 ms"),
-                    ),
-                    Text("Media dos tempos 500ms"),
                   ],
                 )
               ],

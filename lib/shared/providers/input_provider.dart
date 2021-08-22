@@ -3,8 +3,8 @@ import 'package:ordenation_mark/pages/learning_content/learning_content.dart';
 import 'package:ordenation_mark/shared/providers/chart_provider.dart';
 
 class InputProvider extends ChangeNotifier {
-  int valorVetor = 0;
-  int valorMedia = 0;
+  int tamanhoVetor = 0;
+  int qtdeComparacoes = 0;
 
   final timesMap = {
     OrdenationMethodEnum.bubbleSort: <double>[],
@@ -19,15 +19,15 @@ class InputProvider extends ChangeNotifier {
     }
   }
 
-  void updateVetor(int newValor) {
-    valorVetor = newValor;
-    print(valorVetor);
+  void updateTamanhoVetor(int newValor) {
+    tamanhoVetor = newValor;
+    print('tamanho: $tamanhoVetor');
     notifyListeners();
   }
 
-  void updateMedia(int newValor) {
-    valorMedia = newValor;
-    print(valorMedia);
+  void updateQtdeComparacoes(int newValor) {
+    qtdeComparacoes = newValor;
+    print('comparacoes: $qtdeComparacoes');
     notifyListeners();
   }
 }
