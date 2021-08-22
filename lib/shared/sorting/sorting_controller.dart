@@ -1,6 +1,6 @@
 import 'dart:math';
 
-enum OrdenationMethodEnum { bubbleSort, mergeSort, heapSort, insertionSort }
+// enum OrdenationMethodEnum { bubbleSort, mergeSort, heapSort, insertionSort }
 
 class SortingController {
 // Gera uma lista de números aleatórios sem duplicata de tamanho size

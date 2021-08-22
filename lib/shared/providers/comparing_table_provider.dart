@@ -5,6 +5,7 @@ import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:ordenation_mark/pages/learning_content/learning_content.dart';
 import 'package:ordenation_mark/shared/providers/chart_provider.dart';
 import 'package:ordenation_mark/shared/sorting/sorting_controller.dart';
 import 'package:provider/provider.dart';

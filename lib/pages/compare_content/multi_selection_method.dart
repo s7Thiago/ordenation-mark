@@ -3,13 +3,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:group_button/group_button.dart';
+import 'package:ordenation_mark/pages/learning_content/learning_content.dart';
 import 'package:ordenation_mark/shared/providers/chart_provider.dart';
 import 'package:ordenation_mark/shared/providers/comparing_table_provider.dart';
 import 'package:ordenation_mark/shared/sorting/bubble.dart';
 import 'package:ordenation_mark/shared/sorting/heap.dart';
 import 'package:ordenation_mark/shared/sorting/insertion.dart';
 import 'package:ordenation_mark/shared/sorting/merge.dart';
-import 'package:ordenation_mark/shared/sorting/sorting_controller.dart';
 import 'package:provider/provider.dart';
 
 class MultiSelectionMethodWidget extends StatelessWidget {
