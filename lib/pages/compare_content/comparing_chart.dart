@@ -23,7 +23,7 @@ class ComparingChart extends StatelessWidget {
           minX: provider.sizes.min()!.toDouble() * 0,
           maxX: provider.sizes.max()!.toDouble() + 5000,
           minY: 0,
-          maxY: 2.8,
+          maxY: provider.maxTime + .3,
           axisTitleData: FlAxisTitleData(
             show: true,
             leftTitle: AxisTitle(
@@ -41,7 +41,7 @@ class ComparingChart extends StatelessWidget {
             leftTitles: SideTitles(
               showTitles: true,
               reservedSize: 35,
-              interval: .5,
+              interval: .25,
             ),
             bottomTitles: SideTitles(
               showTitles: true,

@@ -7,6 +7,7 @@ import 'package:ordenation_mark/shared/providers/chart_provider.dart';
 import 'package:ordenation_mark/shared/sorting/bubble.dart';
 import 'package:ordenation_mark/shared/sorting/sorting_controller.dart';
 import 'package:provider/provider.dart';
+import 'package:supercharged/supercharged.dart';
 
 class ComparingTableProvider extends ChangeNotifier {
   final List<DataColumn> _columns = [
@@ -22,11 +23,26 @@ class ComparingTableProvider extends ChangeNotifier {
   ];
 
   final Map<String, List<double>> _times = {
-    'b': [],
-    'h': [],
-    'i': [],
-    'm': [],
+    'b': <double>[],
+    'h': <double>[],
+    'i': <double>[],
+    'm': <double>[],
   };
+
+  double _maxTime = 1.0;
+
+  double get maxTime => _maxTime;
+
+  updateMaxTime(double newValue) {
+    if (_maxTime < newValue) {
+      _maxTime = newValue;
+    } else {
+      _maxTime = maxTime + .0000000001;
+    }
+
+    notifyListeners();
+    print('                                               (max: $maxTime)');
+  }
 
   OrdenationMethodEnum? _selectedMethod;
 
@@ -95,6 +111,8 @@ class ComparingTableProvider extends ChangeNotifier {
       }).then((value) {
         // Após encontrar o tempo, adiciona ao map que será plotado no gráfico
         _times[label[0].toLowerCase()]!.add(value);
+
+        updateMaxTime(value);
 
         // addSpot(label, time: value, size: entrySize);
         Provider.of<ChartProvider>(context, listen: false).addSpot(
