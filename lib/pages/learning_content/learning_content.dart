@@ -14,10 +14,6 @@ class LearningPageContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<InputProvider>(context, listen: true);
-    final qtdeItensInputController =
-        TextEditingController(text: '${provider.tamanhoVetor}');
-    final qtdeComparacoesInputController =
-        TextEditingController(text: '${provider.qtdeComparacoes}');
 
     return Container(
       margin: const EdgeInsets.only(left: 257, top: 29),
@@ -29,52 +25,45 @@ class LearningPageContent extends StatelessWidget {
             children: [
               CustomInput(
                 label: "QUANTIDADE DE ITENS NO VETOR GERADO",
-                controller: qtdeItensInputController,
                 onChange: (String text) {
                   if (text.isEmpty) {
                     text = '0';
                   }
 
-                  if (/* qtdeItensInputController. */ text.isEmpty) {
-                    /* qtdeItensInputController. */ text = '0';
+                  if (text.isEmpty) {
+                    text = '0';
                   }
 
                   if (int.parse(text) < provider.tamanhoVetorMax) {
                     if (text.isNotEmpty) {
-                      provider.updateTamanhoVetor(
-                          int.parse(/* qtdeItensInputController. */ text));
+                      provider.updateTamanhoVetor(int.parse(text));
                     } else {
-                      /* qtdeItensInputController. */ text = '0';
-                      provider.updateTamanhoVetor(
-                          int.parse(/* qtdeItensInputController. */ text));
+                      text = '0';
+                      provider.updateTamanhoVetor(int.parse(text));
                     }
                   } else {
-                    /* qtdeItensInputController. */ text =
-                        '${provider.tamanhoVetorMax}';
-                    provider.updateTamanhoVetor(
-                        int.parse(/* qtdeItensInputController. */ text));
+                    text = '${provider.tamanhoVetorMax}';
+                    provider.updateTamanhoVetor(int.parse(text));
                   }
                 },
               ),
               const SizedBox(width: 200),
               CustomInput(
                 label: "QUANTAS COMPARAÇÕES FAZER (VALOR ATÉ 10)",
-                controller: qtdeComparacoesInputController,
                 onChange: (String text) {
                   if (text.isEmpty) {
-                    /* qtdeComparacoesInputController. */ text = '0';
+                    text = '0';
                   }
 
                   if (int.parse(text) < provider.qtdeComparacoesMax) {
                     if (text.isNotEmpty) {
                       provider.updateQtdeComparacoes(int.parse(text));
                     } else {
-                      /* qtdeComparacoesInputController. */ text = '0';
+                      text = '0';
                       provider.updateQtdeComparacoes(int.parse(text));
                     }
                   } else {
-                    /* qtdeComparacoesInputController. */ text =
-                        '${provider.qtdeComparacoesMax}';
+                    text = '${provider.qtdeComparacoesMax}';
                     provider.updateQtdeComparacoes(int.parse(text));
                   }
                 },

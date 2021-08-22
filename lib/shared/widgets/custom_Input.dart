@@ -5,13 +5,11 @@ import 'package:flutter/material.dart';
 class CustomInput extends StatelessWidget {
   final String label;
   final Function(String) onChange;
-  final TextEditingController? controller;
 
   CustomInput({
     Key? key,
     required this.label,
     required this.onChange,
-    this.controller,
   }) : super(key: key);
 
   @override
@@ -43,7 +41,6 @@ class CustomInput extends StatelessWidget {
               Expanded(
                 child: TextField(
                   onChanged: onChange,
-                  // controller: controller,
                   toolbarOptions: ToolbarOptions(cut: true),
                   style: TextStyle(fontSize: 18),
                   decoration: InputDecoration(
