@@ -1,14 +1,10 @@
 import 'dart:math';
 import 'package:collection/algorithms.dart';
 
-// ignore: slash_for_doc_comments
-/**
- * O presente arquivo contém as implementações das funções de ordenação de modo que possam ser testadas em um ambiente mais simples com dart puro
-*/
 void main() {
-  List<int> input = generateRandomListUnique(10000);
+  List<int> input = generateRandomListUnique(1000);
 
-  print('bubble sort time: ${getExecutionTime(HeapSort.sort, input)} ms');
+  print('bubble sort time: ${getExecutionTime(heap, input)} ms');
 }
 
 // Gera uma lista de números aleatórios sem duplicata de tamanho size
@@ -33,6 +29,9 @@ List<int> generateRandomListUnique(int size) {
   }
   return list;
 }
+
+// Dart Heap sort
+List<int> heap(List<int> input) => HeapSort.sort(input);
 
 // Dart Merge sort
 List<int> merge(List<int> list) {

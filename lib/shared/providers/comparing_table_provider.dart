@@ -101,7 +101,7 @@ class ComparingTableProvider extends ChangeNotifier {
       int entrySize = int.parse((row.cells[0].child as Text).data!);
       List<int> input = SortingController.generateRandomList(entrySize);
 
-      await Future.delayed(Duration(milliseconds: (entrySize * .3).toInt()))
+      await Future.delayed(Duration(milliseconds: (entrySize * .35).toInt()))
           .then((value) {
         double executionTime = SortingController.getExecutionTime(
           BubbleSort.sort,
