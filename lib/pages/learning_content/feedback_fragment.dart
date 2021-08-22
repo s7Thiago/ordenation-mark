@@ -40,8 +40,12 @@ class FeedbackFragment extends StatelessWidget {
                       inputProvider.qtdeComparacoes,
                       (index) => Container(
                         margin: const EdgeInsets.only(bottom: 20),
-                        child: const Text("Tempo 1 levou 503 ms"),
+                        child: Text("Tempo ${index + 1} levou 503 ms"),
                       ),
+                    ),
+                    Container(
+                      margin: const EdgeInsets.only(top: 50),
+                      child: const Text('Média total das medições 500 ms'),
                     ),
                   ],
                 ),
