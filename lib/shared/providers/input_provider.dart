@@ -20,6 +20,13 @@ class InputProvider extends ChangeNotifier {
     OrdenationMethodEnum.mergeSort: <double>[]
   };
 
+  clearTimes() {
+    for (List<double> element in timesMap.values) {
+      element.clear();
+    }
+    notifyListeners();
+  }
+
   executeSort(int tamanho, int qtde, OrdenationMethodEnum method) {
     for (int i = 0; i < qtde; i++) {
       List<int> input = SortingController.generateRandomListUnique(tamanho);
