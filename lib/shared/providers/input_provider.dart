@@ -46,6 +46,8 @@ class InputProvider extends ChangeNotifier {
           break;
       }
 
+      print('map: $timesMap');
+
       notifyListeners();
     }
   }

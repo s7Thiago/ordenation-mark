@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ordenation_mark/pages/learning_content/feedback_fragment.dart';
 import 'package:ordenation_mark/pages/learning_content/method_selection_radio_group.dart';
 import 'package:ordenation_mark/shared/providers/input_provider.dart';
+import 'package:ordenation_mark/shared/sorting/bubble.dart';
 import 'package:ordenation_mark/shared/widgets/button.dart';
 import 'package:ordenation_mark/shared/widgets/custom_Input.dart';
 import 'package:provider/provider.dart';
@@ -85,7 +86,12 @@ class LearningPageContent extends StatelessWidget {
                     const FeedbackFragment(),
                     Button(
                       label: "OK",
-                      onTap: () {},
+                      onTap: () {
+                        provider.executeSort(
+                            provider.tamanhoVetor,
+                            provider.qtdeComparacoes,
+                            OrdenationMethodEnum.bubbleSort);
+                      },
                     )
                   ],
                 )
