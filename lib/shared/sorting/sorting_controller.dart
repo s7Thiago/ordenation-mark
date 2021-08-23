@@ -1,5 +1,7 @@
 import 'dart:math';
 
+import 'package:ordenation_mark/pages/learning_content/learning_content.dart';
+
 // enum OrdenationMethodEnum { bubbleSort, mergeSort, heapSort, insertionSort }
 
 class SortingController {

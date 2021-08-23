@@ -45,8 +45,9 @@ class FeedbackFragment extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      margin: const EdgeInsets.only(top: 20),
-                      child: const Text('Média total das medições 500 ms'),
+                      margin: const EdgeInsets.only(top: 50),
+                      child: Text(
+                          'Média total das medições ${inputProvider.getAverageTime(methodProvider.method!).toStringAsFixed(3)} ms'),
                     ),
                   ],
                 ),
