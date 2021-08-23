@@ -8,7 +8,6 @@ import 'package:ordenation_mark/shared/sorting/quick_sort.dart';
 
 class MethodSelection extends ChangeNotifier {
   OrdenationMethodEnum? _method = OrdenationMethodEnum.bubbleSort;
-  String _title = "Bubble Sort";
 
   String get title {
     switch (_method) {

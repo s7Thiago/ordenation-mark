@@ -10,7 +10,7 @@ class Button extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 20, right: 80),
+      margin: const EdgeInsets.only(top: 20, right: 80),
       child: ElevatedButton(
         onPressed: () {
           onTap();
@@ -21,7 +21,7 @@ class Button extends StatelessWidget {
           child: Center(
             child: Text(
               label,
-              style: TextStyle(
+              style: const TextStyle(
                 fontWeight: FontWeight.w500,
                 fontSize: 18,
               ),

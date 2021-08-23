@@ -4,6 +4,7 @@ import 'package:ordenation_mark/shared/sorting/all.dart';
 import 'package:ordenation_mark/shared/sorting/bubble.dart';
 import 'package:ordenation_mark/shared/sorting/insertion.dart';
 import 'package:ordenation_mark/shared/sorting/merge.dart';
+import 'package:ordenation_mark/shared/sorting/quick_sort.dart';
 import 'package:ordenation_mark/shared/sorting/sorting_controller.dart';
 
 class InputProvider extends ChangeNotifier {
@@ -50,6 +51,10 @@ class InputProvider extends ChangeNotifier {
           timesMap[method]!
               .add(SortingController.getExecutionTime(MergeSort.sort, input));
 
+          break;
+        case OrdenationMethodEnum.quickSort:
+          timesMap[method]!
+              .add(SortingController.getExecutionTime(QuickSort.sort, input));
           break;
       }
 
