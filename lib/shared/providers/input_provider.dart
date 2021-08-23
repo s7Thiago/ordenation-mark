@@ -68,4 +68,14 @@ class InputProvider extends ChangeNotifier {
 
     notifyListeners();
   }
+
+  double getAverageTime(OrdenationMethodEnum method) {
+    double media = 0;
+
+    for (var element in timesMap[method]!) {
+      media += element;
+    }
+
+    return media /= qtdeComparacoes;
+  }
 }
