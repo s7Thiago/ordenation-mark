@@ -20,7 +20,7 @@ class FeedbackFragment extends StatelessWidget {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
         child: SizedBox(
           width: size.width * .5,
-          height: size.height * .8,
+          height: size.height * .75,
           child: Column(
             children: [
               Container(
@@ -45,7 +45,7 @@ class FeedbackFragment extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      margin: const EdgeInsets.only(top: 50),
+                      margin: const EdgeInsets.only(top: 20),
                       child: const Text('Média total das medições 500 ms'),
                     ),
                   ],
