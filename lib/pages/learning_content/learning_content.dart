@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ordenation_mark/pages/learning_content/feedback_fragment.dart';
 import 'package:ordenation_mark/pages/learning_content/method_selection_radio_group.dart';
 import 'package:ordenation_mark/shared/providers/input_provider.dart';
+import 'package:ordenation_mark/shared/providers/method_selection.dart';
 import 'package:ordenation_mark/shared/sorting/bubble.dart';
 import 'package:ordenation_mark/shared/widgets/button.dart';
 import 'package:ordenation_mark/shared/widgets/custom_Input.dart';
@@ -15,6 +16,7 @@ class LearningPageContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<InputProvider>(context, listen: true);
+    final methodProvider = Provider.of<MethodSelection>(context, listen: true);
 
     return SingleChildScrollView(
       child: Container(
@@ -87,10 +89,9 @@ class LearningPageContent extends StatelessWidget {
                     Button(
                       label: "OK",
                       onTap: () {
-                        provider.executeSort(
-                            provider.tamanhoVetor,
-                            provider.qtdeComparacoes,
-                            OrdenationMethodEnum.bubbleSort);
+                        provider.clearTimes();
+                        provider.executeSort(provider.tamanhoVetor,
+                            provider.qtdeComparacoes, methodProvider.method!);
                       },
                     )
                   ],

@@ -20,7 +20,7 @@ class FeedbackFragment extends StatelessWidget {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
         child: SizedBox(
           width: size.width * .5,
-          height: size.height * .6,
+          height: size.height * .8,
           child: Column(
             children: [
               Container(
@@ -37,10 +37,11 @@ class FeedbackFragment extends StatelessWidget {
                 child: Column(
                   children: [
                     ...List.generate(
-                      inputProvider.qtdeComparacoes,
+                      inputProvider.timesMap[methodProvider.method]!.length,
                       (index) => Container(
                         margin: const EdgeInsets.only(bottom: 20),
-                        child: Text("Tempo ${index + 1} levou 503 ms"),
+                        child: Text(
+                            "Tempo ${index + 1} levou ${inputProvider.timesMap[methodProvider.method]![index]} ms"),
                       ),
                     ),
                     Container(

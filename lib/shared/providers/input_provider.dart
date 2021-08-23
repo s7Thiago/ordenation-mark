@@ -53,21 +53,19 @@ class InputProvider extends ChangeNotifier {
           break;
       }
 
-      print('map: $timesMap');
-
       notifyListeners();
     }
   }
 
   void updateTamanhoVetor(int newValor) {
     tamanhoVetor = newValor;
-    print('tamanho: $tamanhoVetor');
+
     notifyListeners();
   }
 
   void updateQtdeComparacoes(int newValor) {
     qtdeComparacoes = newValor;
-    print('comparacoes: $qtdeComparacoes');
+
     notifyListeners();
   }
 }
