@@ -19,6 +19,10 @@ class ChartProvider extends ChangeNotifier {
       'chart': LineChartBarData(isCurved: true),
       'spots': <FlSpot>[],
     },
+    'q': {
+      'chart': LineChartBarData(isCurved: true),
+      'spots': <FlSpot>[],
+    }
   };
 
   Map<String, Map<String, dynamic>> get lineCharts => _lineCharts;

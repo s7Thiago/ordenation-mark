@@ -10,6 +10,7 @@ import 'package:ordenation_mark/shared/sorting/bubble.dart';
 import 'package:ordenation_mark/shared/sorting/heap.dart';
 import 'package:ordenation_mark/shared/sorting/insertion.dart';
 import 'package:ordenation_mark/shared/sorting/merge.dart';
+import 'package:ordenation_mark/shared/sorting/quick_sort.dart';
 import 'package:provider/provider.dart';
 
 class MultiSelectionMethodWidget extends StatelessWidget {
@@ -22,7 +23,7 @@ class MultiSelectionMethodWidget extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     final List<String> buttons = [
       'Bubble Sort',
-      'Merge Sort',
+      'Quick Sort',
       'Heap Sort',
       'Insertion Sort',
     ];
@@ -76,9 +77,9 @@ class MultiSelectionMethodWidget extends StatelessWidget {
                         case 1:
                           print('$index - ${buttons[index]}');
                           provider.updateSelectedMethod(
-                              OrdenationMethodEnum.mergeSort);
+                              OrdenationMethodEnum.quickSort);
                           provider.addColumn(
-                              buttons[index], MergeSort.sort, context);
+                              buttons[index], QuickSort.sort, context);
                           break;
                         case 2:
                           print('$index - ${buttons[index]}');

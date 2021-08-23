@@ -4,6 +4,7 @@ import 'package:ordenation_mark/shared/sorting/all.dart';
 import 'package:ordenation_mark/shared/sorting/bubble.dart';
 import 'package:ordenation_mark/shared/sorting/insertion.dart';
 import 'package:ordenation_mark/shared/sorting/merge.dart';
+import 'package:ordenation_mark/shared/sorting/quick_sort.dart';
 
 class MethodSelection extends ChangeNotifier {
   OrdenationMethodEnum? _method = OrdenationMethodEnum.bubbleSort;
@@ -19,6 +20,8 @@ class MethodSelection extends ChangeNotifier {
         return "Insertion Sort";
       case OrdenationMethodEnum.mergeSort:
         return "Merge Sort";
+      case OrdenationMethodEnum.quickSort:
+        return "Quick Sort";
       default:
         return "Invalido";
     }
@@ -34,6 +37,8 @@ class MethodSelection extends ChangeNotifier {
         return InsertionSort.sort;
       case OrdenationMethodEnum.mergeSort:
         return MergeSort.sort;
+      case OrdenationMethodEnum.quickSort:
+        return QuickSort.sort;
       default:
         return (List<int> input) => <int>[];
     }

@@ -59,7 +59,7 @@ class MethodSelectRadioGroup extends StatelessWidget {
               methodProvider.updateMethod(value);
             },
             title: const Text(
-              "Merge Sort",
+              "Quick Sort",
               style: TextStyle(
                 fontSize: 18,
                 color: Colors.white,

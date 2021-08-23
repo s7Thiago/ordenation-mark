@@ -8,7 +8,13 @@ import 'package:ordenation_mark/shared/widgets/button.dart';
 import 'package:ordenation_mark/shared/widgets/custom_Input.dart';
 import 'package:provider/provider.dart';
 
-enum OrdenationMethodEnum { bubbleSort, mergeSort, heapSort, insertionSort }
+enum OrdenationMethodEnum {
+  bubbleSort,
+  mergeSort,
+  heapSort,
+  insertionSort,
+  quickSort
+}
 
 class LearningPageContent extends StatelessWidget {
   const LearningPageContent({Key? key}) : super(key: key);

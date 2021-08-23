@@ -28,6 +28,7 @@ class ComparingTableProvider extends ChangeNotifier {
     'h': <double>[],
     'i': <double>[],
     'm': <double>[],
+    'q': <double>[],
   };
 
   double _maxTime = .5;
@@ -74,6 +75,8 @@ class ComparingTableProvider extends ChangeNotifier {
         return Colors.deepOrange;
       case OrdenationMethodEnum.insertionSort:
         return Colors.purple;
+      case OrdenationMethodEnum.quickSort:
+        return Colors.cyan;
       default:
         return Colors.black;
     }
